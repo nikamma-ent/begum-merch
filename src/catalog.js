@@ -25,26 +25,29 @@ export const SIZES = ["S", "M", "L", "XL", "XXL"];
 // price: pre-order price in rupees (what the site charges).
 // venuePrice: what the same tee costs at the merch table on the night.
 //   Shown crossed out so fans see the saving. null hides it.
-// image: path under /docs, e.g. "img/tee-a.jpg" (no leading slash).
+// image / imageBack: paths under /docs, e.g. "img/tee-a.jpg" (no leading
+//   slash). imageBack adds a Front/Back switch; null hides it.
 // With no image, the site draws a plain tee in `color`.
 export const DESIGNS = [
   {
     id: "tee-a",
-    name: "Design A",
-    blurb: "Replace with a one-line description of the print.",
+    name: "We Are Okay! Tour Tee",
+    blurb: "Mustard tee. BEGUM and roses on the front, the tour poster and dates on the back.",
     price: 1000,
     venuePrice: 1200,
-    image: null,
-    color: "#AF4653",
+    image: "img/tee-tour-front.jpg",
+    imageBack: "img/tee-tour-back.jpg",
+    color: "#E0B32A",
   },
   {
     id: "tee-b",
-    name: "Design B",
-    blurb: "Replace with a one-line description of the print.",
+    name: "All My Friends Tee",
+    blurb: "Lavender tee with \u201call my friends are sl\u{1F339}ts\u201d on the front.",
     price: 1000,
     venuePrice: 1200,
-    image: null,
-    color: "#175AA4",
+    image: "img/tee-amfs.jpg",
+    imageBack: null,
+    color: "#9C86C4",
   },
 ];
 

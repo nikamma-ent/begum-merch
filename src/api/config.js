@@ -7,7 +7,7 @@ export async function onRequestGet({ env }) {
   return json({
     tour: TOUR,
     cities: CITIES.map((c) => ({ id: c.id, code: c.code, name: c.name, venue: c.venue, date: c.date, open: isCityOpen(c) })),
-    designs: DESIGNS.map((d) => ({ id: d.id, name: d.name, blurb: d.blurb, price: d.price, venuePrice: d.venuePrice ?? null, image: d.image, color: d.color })),
+    designs: DESIGNS.map((d) => ({ id: d.id, name: d.name, blurb: d.blurb, price: d.price, venuePrice: d.venuePrice ?? null, image: d.image, imageBack: d.imageBack ?? null, color: d.color })),
     sizes: SIZES,
     sizeChart: SIZE_CHART,
     limits: LIMITS,

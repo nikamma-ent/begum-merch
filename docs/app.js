@@ -8,7 +8,7 @@
     : (document.querySelector('meta[name="api-base"]')?.content || "").replace(/\/$/, "");
   const LAST_ORDER_KEY = "begum-wao-last-order";
 
-  const state = { cfg: null, city: null, cart: [], picks: {}, busy: false };
+  const state = { cfg: null, city: null, cart: [], picks: {}, views: {}, busy: false };
 
   const design = (id) => state.cfg.designs.find((d) => d.id === id);
   const city = (id) => state.cfg.cities.find((c) => c.id === id);
@@ -85,9 +85,19 @@
               aria-label="${s}${out ? ", sold out" : ""}">${s}</button>`;
           })
           .join("");
-        const art = d.image ? `<img src="${esc(d.image)}" alt="${esc(d.name)} tee" loading="lazy">` : teeSvg(d.color);
+        const back = !!(d.image && d.imageBack) && state.views[d.id] === "back";
+        const art = !d.image
+          ? teeSvg(d.color)
+          : `<img src="${esc(d.image)}" alt="${esc(d.name)}, front" loading="lazy" ${back ? "hidden" : ""}>` +
+            (d.imageBack ? `<img src="${esc(d.imageBack)}" alt="${esc(d.name)}, back" loading="lazy" ${back ? "" : "hidden"}>` : "");
+        const flip = d.image && d.imageBack
+          ? `<div class="flip" role="group" aria-label="Show side">
+              <button type="button" data-side="front" aria-pressed="${!back}">Front</button>
+              <button type="button" data-side="back" aria-pressed="${back}">Back</button>
+            </div>`
+          : "";
         return `<article class="design" data-design="${d.id}">
-          <div class="art">${art}</div>
+          <div class="art">${art}${flip}</div>
           <div class="design-head"><h3>${esc(d.name)}</h3><span class="price">${inr(d.price)}${saving(d) ? ` <s class="was" aria-label="${inr(d.venuePrice)} at the show">${inr(d.venuePrice)}</s>` : ""}</span></div>
           ${saving(d) ? `<p class="deal">Pre-order price. It's ${inr(d.venuePrice)} at the merch table on the night.</p>` : ""}
           ${d.blurb ? `<p class="blurb">${esc(d.blurb)}</p>` : ""}
@@ -101,6 +111,16 @@
 
     document.querySelectorAll(".design").forEach((card) => {
       const id = card.dataset.design;
+      card.querySelectorAll(".flip button").forEach((b) =>
+        b.addEventListener("click", () => {
+          const back = b.dataset.side === "back";
+          state.views[id] = back ? "back" : "front";
+          const [front, rear] = card.querySelectorAll(".art img");
+          front.hidden = back;
+          rear.hidden = !back;
+          card.querySelectorAll(".flip button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        })
+      );
       card.querySelectorAll(".size").forEach((b) =>
         b.addEventListener("click", () => {
           state.picks[id] = b.dataset.size;
