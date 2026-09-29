@@ -25,7 +25,7 @@ export const SIZES = ["S", "M", "L", "XL", "XXL"];
 // price: pre-order price in rupees (what the site charges).
 // venuePrice: what the same tee costs at the merch table on the night.
 //   Shown crossed out so fans see the saving. null hides it.
-// image: path under /public, e.g. "img/tee-a.jpg" (no leading slash).
+// image: path under /docs, e.g. "img/tee-a.jpg" (no leading slash).
 // With no image, the site draws a plain tee in `color`.
 export const DESIGNS = [
   {

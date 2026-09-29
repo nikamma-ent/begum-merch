@@ -7,7 +7,7 @@ The site runs on GitHub Pages and the backend on Cloudflare Workers, both free (
 ## What's in here
 
 ```
-public/            The site (GitHub Pages): index.html, app.js, styles.css, policy pages
+docs/              The site (GitHub Pages): index.html, app.js, styles.css, policy pages
   img/             Hero art, rose ornament and floral frame, cut from the tour poster
 src/worker.js      The backend (Cloudflare Worker): routes + CORS
 src/api/           Its endpoints
@@ -25,11 +25,11 @@ apps-script/       Optional Google Sheet sync for pickup lists
 
 1. **`src/catalog.js`**
    - Design names, one-line descriptions, prices
-   - Tee photos: put them in `public/img/` and set `image: "/img/tee-a.jpg"`. Square images look best.
+   - Tee photos: put them in `docs/img/` and set `image: "img/tee-a.jpg"` (no leading slash). Square images look best.
    - Pre-order cutoffs (`ordersCloseAt`). Cities, venues and dates are already set from the tour poster.
    - Size chart from your printer
    - Stock caps, if you want them (leave `null` for unlimited print-to-order)
-2. **Policy pages** (`public/terms.html`, `refunds.html`, `privacy.html`, `contact.html`): replace `[SELLER LEGAL NAME]`, `[CONTACT EMAIL]`, `[CONTACT PHONE]`, `[REGISTERED ADDRESS]`. Use the entity that owns the Razorpay account. Read the refund policy and adjust it to what you actually want to offer.
+2. **Policy pages** (`docs/terms.html`, `refunds.html`, `privacy.html`, `contact.html`): replace `[SELLER LEGAL NAME]`, `[CONTACT EMAIL]`, `[CONTACT PHONE]`, `[REGISTERED ADDRESS]`. Use the entity that owns the Razorpay account. Read the refund policy and adjust it to what you actually want to offer.
 
 ## Deploy (about 30 minutes)
 
@@ -67,9 +67,9 @@ Generate random strings with: `openssl rand -hex 24`
 `npm run deploy` prints the backend address, e.g. `https://begum-merch.yourname.workers.dev`. Call it `API` below.
 
 ### 2. Site: GitHub Pages
-1. In `public/index.html`, set `<meta name="api-base" content="…">` to your `API` address.
+1. In `docs/index.html`, set `<meta name="api-base" content="…">` to your `API` address.
 2. Create a GitHub repo and push this folder to it (branch `main`).
-3. Repo → Settings → Pages → Source: **GitHub Actions**. The included workflow publishes `public/` on every push. The site appears at `https://yourname.github.io/REPO/`.
+3. Repo → Settings → Pages → Source: **Deploy from a branch**, branch `main`, folder `/docs`, Save. Every push to `main` republishes the site. The site appears at `https://yourname.github.io/REPO/`.
 4. In `wrangler.toml`, add your Pages origin to `ALLOWED_ORIGINS` (just `https://yourname.github.io`, no path), then `npm run deploy` again. Without this, the site can't talk to the backend.
 
 **Custom domain (optional):** repo → Settings → Pages → Custom domain, e.g. `merch.begum.in`. Add that origin to `ALLOWED_ORIGINS` too.

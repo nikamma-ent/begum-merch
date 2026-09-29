@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev --port 8787",
-    "site": "python3 -m http.server 8788 --directory public",
+    "site": "python3 -m http.server 8788 --directory docs",
     "deploy": "wrangler deploy",
     "db:init:local": "wrangler d1 execute begum-merch --local --file=schema.sql",
     "db:init": "wrangler d1 execute begum-merch --remote --file=schema.sql"
