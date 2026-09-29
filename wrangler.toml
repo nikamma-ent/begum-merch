@@ -10,4 +10,4 @@ ALLOWED_ORIGINS = "https://nikamma-ent.github.io,http://localhost:8788"
 [[d1_databases]]
 binding = "DB"
 database_name = "begum-merch"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "5ae56a3d-19dd-4f8e-b009-6881307897dd"
