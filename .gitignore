@@ -4,3 +4,4 @@ node_modules/
 *.ai
 .DS_Store
 /*.jpeg
+.secrets.local

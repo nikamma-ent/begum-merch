@@ -12,7 +12,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const { razorpay_order_id: oid, razorpay_payment_id: pid, razorpay_signature: sig } = b || {};
   if (!oid || !pid || !sig) return fail("Missing payment details.");
 
-  const expected = await hmacHex(env.RAZORPAY_KEY_SECRET, `${oid}|${pid}`);
+  const expected = await hmacHex(String(env.RAZORPAY_KEY_SECRET).trim(), `${oid}|${pid}`);
   if (!safeEqual(expected, sig)) return fail("This payment couldn't be verified.", 400);
 
   const order = await markPaid(env, { waitUntil }, oid, pid);

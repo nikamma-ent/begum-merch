@@ -8,7 +8,8 @@ import { safeEqual, toCsv } from "../../util.js";
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
   const token = url.searchParams.get("token") || "";
-  if (!env.ADMIN_TOKEN || !safeEqual(token, env.ADMIN_TOKEN)) return new Response("Not allowed", { status: 401 });
+  const admin = String(env.ADMIN_TOKEN || "").trim();
+  if (!admin || !safeEqual(token, admin)) return new Response("Not allowed", { status: 401 });
 
   const city = url.searchParams.get("city");
   if (city && !findCity(city)) {

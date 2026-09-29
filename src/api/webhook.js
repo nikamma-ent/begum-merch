@@ -5,7 +5,7 @@ import { hmacHex, safeEqual } from "../util.js";
 export async function onRequestPost({ request, env, waitUntil }) {
   const raw = await request.text();
   const sig = request.headers.get("x-razorpay-signature") || "";
-  const expected = await hmacHex(env.RAZORPAY_WEBHOOK_SECRET, raw);
+  const expected = await hmacHex(String(env.RAZORPAY_WEBHOOK_SECRET).trim(), raw);
   if (!safeEqual(expected, sig)) return new Response("Invalid signature", { status: 400 });
 
   let event;

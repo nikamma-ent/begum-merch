@@ -3,7 +3,7 @@ export async function createRazorpayOrder(env, { amount, receipt, notes }) {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      authorization: "Basic " + btoa(`${env.RAZORPAY_KEY_ID}:${env.RAZORPAY_KEY_SECRET}`),
+      authorization: "Basic " + btoa(`${String(env.RAZORPAY_KEY_ID).trim()}:${String(env.RAZORPAY_KEY_SECRET).trim()}`),
     },
     body: JSON.stringify({ amount, currency: "INR", receipt, notes }),
   });

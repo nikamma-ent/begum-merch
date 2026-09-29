@@ -86,5 +86,5 @@ export async function onRequestPost({ request, env }) {
     ),
   ]);
 
-  return json({ code, rzpOrderId: rzp.id, amount, keyId: env.RAZORPAY_KEY_ID, name, email, phone });
+  return json({ code, rzpOrderId: rzp.id, amount, keyId: String(env.RAZORPAY_KEY_ID).trim(), name, email, phone });
 }
