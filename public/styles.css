@@ -1,10 +1,10 @@
-/* Colours sampled from the We Are Okay! Tour '26 poster */
+/* Colours from the We Are Okay! Tour '26 poster artwork (.ai) */
 :root {
-  --mustard: #F5D921;   /* poster ground */
-  --ground: #FCE226;    /* mustard before grain is laid over it */
-  --sky: #DED881;       /* khaki sky, used for panels */
+  --mustard: #F5D822;   /* poster ground */
+  --ground: #F5D822;
+  --sky: #DCD786;       /* khaki sky, used for panels */
   --sky-deep: #CFC86A;
-  --rose: #B03850;      /* lettering */
+  --rose: #AF4653;      /* lettering */
   --maroon: #5A1A2A;    /* lettering shadow, body text */
   --cobalt: #175AA4;    /* clouds: selection, focus */
   --leaf: #2F6B2E;      /* vines */
@@ -17,10 +17,24 @@
   --frame: clamp(16px, 3.2vw, 36px);
   --gutter: clamp(1.1rem, 4vw, 3rem);
   --measure: 66ch;
+}
 
-  /* the poster's printed extrusion */
-  --extrude: 1px 1px 0 var(--maroon), 2px 2px 0 var(--maroon), 3px 3px 0 var(--maroon), 4px 4px 0 var(--maroon);
-  --extrude-sm: 1px 1px 0 var(--maroon), 2px 2px 0 var(--maroon);
+/* The poster's title lettering: a rose outline set down-right of each
+   letter, with a mustard gap between. Needs data-text="same text". */
+.outlined { position: relative; isolation: isolate; }
+.outlined::before {
+  content: attr(data-text);
+  position: absolute; inset: 0; z-index: -1;
+  transform: translate(0.055em, 0.055em);
+  color: transparent;
+  -webkit-text-stroke: 0.03em var(--rose);
+  text-shadow: none;
+  pointer-events: none;
+}
+.outlined {
+  text-shadow:
+    0.022em 0 0 var(--ground), -0.022em 0 0 var(--ground), 0 0.022em 0 var(--ground), 0 -0.022em 0 var(--ground),
+    0.016em 0.016em 0 var(--ground), -0.016em 0.016em 0 var(--ground), 0.016em -0.016em 0 var(--ground), -0.016em -0.016em 0 var(--ground);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -60,7 +74,6 @@ a { color: inherit; text-underline-offset: 0.18em; }
   text-transform: uppercase;
   letter-spacing: 0.01em;
   color: var(--rose);
-  text-shadow: var(--extrude);
   margin: clamp(1.4rem, 4vw, 2.6rem) var(--gutter) 0;
 }
 .tour {
@@ -68,7 +81,6 @@ a { color: inherit; text-underline-offset: 0.18em; }
   font: 400 clamp(1.4rem, 4.2vw, 2.5rem)/1 var(--display);
   text-transform: uppercase;
   color: var(--rose);
-  text-shadow: var(--extrude-sm);
   margin: 0.9rem 0 0;
 }
 .tour img { width: clamp(22px, 4vw, 34px); height: auto; }
@@ -82,7 +94,6 @@ a { color: inherit; text-underline-offset: 0.18em; }
   display: flex; align-items: center; gap: 0.75rem;
   font: 400 clamp(1.35rem, 3.2vw, 1.9rem)/1.15 var(--display);
   color: var(--rose);
-  text-shadow: var(--extrude-sm);
   margin: 0 0 0.4rem;
 }
 .num {
@@ -103,8 +114,8 @@ a { color: inherit; text-underline-offset: 0.18em; }
   padding: 1rem 0.6rem 0.9rem; display: grid; gap: 0.2rem; justify-items: center;
   transition: background-color 0.15s, color 0.15s;
 }
-.city:hover { background: rgba(176, 56, 80, 0.1); }
-.city-code { font: 400 clamp(1.9rem, 5vw, 2.5rem)/1 var(--display); text-shadow: var(--extrude-sm) }
+.city:hover { background: rgba(175, 70, 83, 0.1); }
+.city-code { font: 400 clamp(1.9rem, 5vw, 2.5rem)/1 var(--display); }
 .city-date, .city-venue { font: 400 0.95rem/1.25 var(--display); text-transform: uppercase; letter-spacing: 0.02em }
 .city-venue { font-size: 0.82rem; }
 .city[aria-checked="true"] { background: var(--rose); color: var(--mustard); box-shadow: 4px 4px 0 var(--maroon); }
@@ -226,7 +237,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
 .done { padding-bottom: 3rem; text-align: center; }
 .done h2 {
   font: 400 clamp(2rem, 7vw, 3.8rem)/1.05 var(--display); text-transform: uppercase;
-  color: var(--rose); text-shadow: var(--extrude); margin: 0 0 1.4rem;
+  color: var(--rose); margin: 0 0 1.4rem;
 }
 .ticket {
   background: var(--sky); border: 2px dashed var(--rose); border-radius: 22px;
@@ -249,7 +260,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
 .doc .back { display: inline-block; margin-bottom: 1.8rem; font-weight: 700; }
 .doc h1 {
   font: 400 clamp(2rem, 6.5vw, 3.4rem)/1.05 var(--display); text-transform: uppercase;
-  color: var(--rose); text-shadow: var(--extrude); margin: 0 0 1.5rem;
+  color: var(--rose); margin: 0 0 1.5rem;
 }
 .doc h2 { font: 400 1.2rem/1.3 var(--display); color: var(--rose); margin: 2rem 0 0.4rem; }
 .doc p, .doc li { max-width: var(--measure); }

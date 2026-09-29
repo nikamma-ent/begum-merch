@@ -276,7 +276,7 @@
       description: `${state.cfg.tour.name} tees, ${order.code}`,
       prefill: { name: order.name, email: order.email, contact: order.phone },
       notes: { order_code: order.code, pickup: `${c.venue}, ${c.name}` },
-      theme: { color: "#B03850" },
+      theme: { color: "#AF4653" },
       timeout: 900,
       handler: (resp) => confirm(resp, order),
       modal: {
@@ -332,7 +332,7 @@
       ? `<p><strong>Your payment went through, but this page couldn't confirm it.</strong> Don't pay again. Keep this code and your payment ID (${esc(o.paymentId)}), and contact us if you don't get a receipt email.</p>`
       : "";
     const done = $("#done");
-    done.innerHTML = `<h2>You're on the list.</h2>
+    done.innerHTML = `<h2 class="outlined" data-text="You're on the list.">You're on the list.</h2>
       <div class="ticket">
         <p class="ticket-label">Your pickup code</p>
         <p class="code">${esc(o.code)}</p>

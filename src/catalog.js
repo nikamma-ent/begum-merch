@@ -35,7 +35,7 @@ export const DESIGNS = [
     price: 1000,
     venuePrice: 1200,
     image: null,
-    color: "#B03850",
+    color: "#AF4653",
   },
   {
     id: "tee-b",
