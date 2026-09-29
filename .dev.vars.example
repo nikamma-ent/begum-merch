@@ -1,0 +1,8 @@
+# Copy to .dev.vars for local testing. Never commit .dev.vars.
+RAZORPAY_KEY_ID=rzp_test_xxxxxxxxxxxx
+RAZORPAY_KEY_SECRET=xxxxxxxxxxxxxxxxxxxx
+RAZORPAY_WEBHOOK_SECRET=pick-a-long-random-string
+ADMIN_TOKEN=pick-another-long-random-string
+# Optional Google Sheet sync
+SHEET_WEBHOOK_URL=
+SHEET_TOKEN=

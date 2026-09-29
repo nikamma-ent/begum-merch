@@ -1,0 +1,13 @@
+name = "begum-merch"
+main = "src/worker.js"
+compatibility_date = "2024-09-23"
+
+# Sites allowed to call the API from a browser. Add your GitHub Pages
+# address (e.g. https://yourname.github.io) before deploying.
+[vars]
+ALLOWED_ORIGINS = "http://localhost:8788"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "begum-merch"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
