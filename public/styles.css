@@ -11,7 +11,7 @@
   --line: rgba(90, 26, 42, 0.28);
   --error: #8E1230;
 
-  --display: "Ultra", "Rockwell Extra Bold", "Rockwell", Georgia, serif;
+  --display: "Shrikhand", "Cooper Black", Georgia, serif;
   --body: "Alegreya", Georgia, "Times New Roman", serif;
 
   --frame: clamp(16px, 3.2vw, 36px);
@@ -61,7 +61,6 @@ a { color: inherit; text-underline-offset: 0.18em; }
   letter-spacing: 0.01em;
   color: var(--rose);
   text-shadow: var(--extrude);
-  transform: skewX(-9deg);
   margin: clamp(1.4rem, 4vw, 2.6rem) var(--gutter) 0;
 }
 .tour {
@@ -105,8 +104,8 @@ a { color: inherit; text-underline-offset: 0.18em; }
   transition: background-color 0.15s, color 0.15s;
 }
 .city:hover { background: rgba(176, 56, 80, 0.1); }
-.city-code { font: 400 clamp(1.9rem, 5vw, 2.5rem)/1 var(--display); text-shadow: var(--extrude-sm); transform: skewX(-9deg); }
-.city-date, .city-venue { font: 400 0.95rem/1.25 var(--display); text-transform: uppercase; letter-spacing: 0.02em; transform: skewX(-9deg); }
+.city-code { font: 400 clamp(1.9rem, 5vw, 2.5rem)/1 var(--display); text-shadow: var(--extrude-sm) }
+.city-date, .city-venue { font: 400 0.95rem/1.25 var(--display); text-transform: uppercase; letter-spacing: 0.02em }
 .city-venue { font-size: 0.82rem; }
 .city[aria-checked="true"] { background: var(--rose); color: var(--mustard); box-shadow: 4px 4px 0 var(--maroon); }
 .city[aria-checked="true"] .city-code { text-shadow: 2px 2px 0 var(--maroon); }
@@ -227,7 +226,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
 .done { padding-bottom: 3rem; text-align: center; }
 .done h2 {
   font: 400 clamp(2rem, 7vw, 3.8rem)/1.05 var(--display); text-transform: uppercase;
-  color: var(--rose); text-shadow: var(--extrude); transform: skewX(-9deg); margin: 0 0 1.4rem;
+  color: var(--rose); text-shadow: var(--extrude); margin: 0 0 1.4rem;
 }
 .ticket {
   background: var(--sky); border: 2px dashed var(--rose); border-radius: 22px;
@@ -250,7 +249,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
 .doc .back { display: inline-block; margin-bottom: 1.8rem; font-weight: 700; }
 .doc h1 {
   font: 400 clamp(2rem, 6.5vw, 3.4rem)/1.05 var(--display); text-transform: uppercase;
-  color: var(--rose); text-shadow: var(--extrude); transform: skewX(-9deg); transform-origin: left; margin: 0 0 1.5rem;
+  color: var(--rose); text-shadow: var(--extrude); margin: 0 0 1.5rem;
 }
 .doc h2 { font: 400 1.2rem/1.3 var(--display); color: var(--rose); margin: 2rem 0 0.4rem; }
 .doc p, .doc li { max-width: var(--measure); }
