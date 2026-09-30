@@ -1,13 +1,13 @@
-import { CITIES, DESIGNS, SIZES, HOLD_MINUTES, capFor, sku, findCity, findDesign } from "./catalog.js";
+import { CITIES, DESIGNS, SIZES, HOLD_MINUTES, stockFor, findCity, findDesign } from "./catalog.js";
 
-// Stock is tracked as a "held" count per city/design/size.
+// Stock is tracked as a "held" count per pool/design/size (pool = a city, or
+// "all" for the tour-wide pool; see STOCK_CAPS).
 // Pending orders hold stock; paid orders keep it; expired orders give it back.
 
 export async function reserve(db, city, items) {
   const done = [];
   for (const it of items) {
-    const key = sku(city, it.design, it.size);
-    const cap = capFor(city, it.design, it.size);
+    const { key, cap } = stockFor(city, it.design, it.size);
     await db.prepare("INSERT INTO stock (sku, held) VALUES (?1, 0) ON CONFLICT(sku) DO NOTHING").bind(key).run();
     // Single conditional UPDATE, so two buyers can't grab the last one at once.
     const r =
@@ -27,7 +27,7 @@ export async function release(db, city, items) {
   if (!items.length) return;
   await db.batch(
     items.map((it) =>
-      db.prepare("UPDATE stock SET held = MAX(held - ?1, 0) WHERE sku = ?2").bind(it.qty, sku(city, it.design, it.size))
+      db.prepare("UPDATE stock SET held = MAX(held - ?1, 0) WHERE sku = ?2").bind(it.qty, stockFor(city, it.design, it.size).key)
     )
   );
 }
@@ -61,8 +61,8 @@ export async function availability(db) {
     for (const d of DESIGNS) {
       out[c.id][d.id] = {};
       for (const s of SIZES) {
-        const cap = capFor(c.id, d.id, s);
-        out[c.id][d.id][s] = cap === null ? null : Math.max(cap - (held[sku(c.id, d.id, s)] || 0), 0);
+        const { key, cap } = stockFor(c.id, d.id, s);
+        out[c.id][d.id][s] = cap === null ? null : Math.max(cap - (held[key] || 0), 0);
       }
     }
   }
@@ -109,7 +109,7 @@ export async function markPaid(env, ctx, rzpOrderId, paymentId) {
         items.map((it) =>
           db
             .prepare("INSERT INTO stock (sku, held) VALUES (?2, ?1) ON CONFLICT(sku) DO UPDATE SET held = held + ?1")
-            .bind(it.qty, sku(order.city, it.design, it.size))
+            .bind(it.qty, stockFor(order.city, it.design, it.size).key)
         )
       );
     }

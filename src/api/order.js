@@ -48,7 +48,7 @@ export async function onRequestPost({ request, env }) {
   const held = await reserve(env.DB, city.id, items);
   if (!held.ok) {
     const d = findDesign(held.soldOut.design);
-    return fail(`Not enough ${d.name} in ${held.soldOut.size} left for ${city.name}. Lower the quantity or pick another size.`, 409, {
+    return fail(`Not enough ${d.name} in ${held.soldOut.size} left. Lower the quantity or pick another size.`, 409, {
       soldOut: held.soldOut,
     });
   }

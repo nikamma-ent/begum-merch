@@ -28,7 +28,7 @@ apps-script/       Optional Google Sheet sync for pickup lists
    - Tee photos: put them in `docs/img/` and set `image: "img/tee-a.jpg"` (no leading slash). Square images look best.
    - Pre-order cutoffs (`ordersCloseAt`). Cities, venues and dates are already set from the tour poster.
    - Size chart from your printer
-   - Stock caps, if you want them (leave `null` for unlimited print-to-order)
+   - Stock caps (`STOCK_CAPS`): "all" is one pool shared by every show. Set to `null` for unlimited print-to-order
 2. **Policy pages** (`docs/terms.html`, `refunds.html`, `privacy.html`, `contact.html`): replace `[SELLER LEGAL NAME]`, `[CONTACT EMAIL]`, `[CONTACT PHONE]`, `[REGISTERED ADDRESS]`. Use the entity that owns the Razorpay account. Read the refund policy and adjust it to what you actually want to offer.
 
 ## Deploy (about 30 minutes)

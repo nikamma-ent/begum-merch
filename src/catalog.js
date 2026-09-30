@@ -62,13 +62,15 @@ export const SIZE_CHART = null;
 //   XXL: { chest: 46, length: 31 },
 // };
 
-// Stock caps per city, design and size. null = unlimited (print to order).
-// Leave out any city/design/size to make that one unlimited.
-export const STOCK_CAPS = null;
-// export const STOCK_CAPS = {
-//   goa:    { "tee-a": { S: 10, M: 25, L: 25, XL: 15, XXL: 5 }, "tee-b": { S: 10, M: 25, L: 25, XL: 15, XXL: 5 } },
-//   delhi:  { "tee-a": { S: 15, M: 40, L: 40, XL: 20, XXL: 8 } },
-// };
+// Stock caps per design and size. null = unlimited (print to order).
+// "all" is one pool shared by every show: a tee sold for Delhi is one fewer
+// for Bangalore. A city's own entry (e.g. goa: {...}) would give that city a
+// separate pool instead. Leave out a design/size to make it unlimited.
+const TOUR_SPLIT = { S: 10, M: 14, L: 14, XL: 8, XXL: 4 }; // 50 per design
+
+export const STOCK_CAPS = {
+  all: { "tee-a": TOUR_SPLIT, "tee-b": TOUR_SPLIT },
+};
 
 export const LIMITS = { maxPerLine: 5, maxPerOrder: 10 };
 
@@ -84,7 +86,13 @@ export function isCityOpen(city, now = Date.now()) {
   return !city.ordersCloseAt || now < Date.parse(city.ordersCloseAt);
 }
 
-export function capFor(city, design, size) {
-  const v = STOCK_CAPS?.[city]?.[design]?.[size];
+export function capFor(pool, design, size) {
+  const v = STOCK_CAPS?.[pool]?.[design]?.[size];
   return typeof v === "number" ? v : null;
+}
+
+// Which stock counter an item for this city draws from, and its cap.
+export function stockFor(city, design, size) {
+  const pool = capFor(city, design, size) !== null ? city : capFor("all", design, size) !== null ? "all" : city;
+  return { key: sku(pool, design, size), cap: capFor(pool, design, size) };
 }
