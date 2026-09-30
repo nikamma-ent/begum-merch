@@ -33,8 +33,8 @@ export const DESIGNS = [
     id: "tee-a",
     name: "We Are Okay! Tour Tee",
     blurb: "Mustard tee. BEGUM and roses on the front, the tour poster and dates on the back.",
-    price: 1000,
-    venuePrice: 1200,
+    price: 1, // TEMP for testing. Real: 1000
+    venuePrice: null, // TEMP for testing. Real: 1200
     image: "img/tee-tour-front.jpg",
     imageBack: "img/tee-tour-back.jpg",
     color: "#E0B32A",
@@ -43,8 +43,8 @@ export const DESIGNS = [
     id: "tee-b",
     name: "All My Friends Tee",
     blurb: "Lavender tee with \u201call my friends are sl\u{1F339}ts\u201d on the front.",
-    price: 1000,
-    venuePrice: 1200,
+    price: 1, // TEMP for testing. Real: 1000
+    venuePrice: null, // TEMP for testing. Real: 1200
     image: "img/tee-amfs.jpg",
     imageBack: null,
     color: "#9C86C4",
