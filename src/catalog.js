@@ -42,12 +42,12 @@ export const DESIGNS = [
   {
     id: "tee-b",
     name: "All My Friends Tee",
-    blurb: "Lavender tee with \u201call my friends are sl\u{1F339}ts\u201d on the front.",
+    blurb: "Acid-wash blue tee with \u201call my friends are sl\u{1F339}ts\u201d on the front.",
     price: 1, // TEMP for testing. Real: 1000
     venuePrice: null, // TEMP for testing. Real: 1200
-    image: "img/tee-amfs.jpg",
+    image: "img/tee-amfs-blue.jpg",
     imageBack: null,
-    color: "#9C86C4",
+    color: "#5B87C5",
   },
 ];
 

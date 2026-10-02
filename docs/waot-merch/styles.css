@@ -7,6 +7,7 @@
   --rose: #AF4653;      /* lettering */
   --maroon: #5A1A2A;    /* lettering shadow, body text */
   --vine: #377116;      /* dark vine green from the border: selection, focus */
+  --vine-deep: #1F430B; /* its shadow */
   --leaf: #2F6B2E;      /* vines */
   --line: rgba(90, 26, 42, 0.28);
   --error: #8E1230;
@@ -130,12 +131,12 @@ a { color: inherit; text-underline-offset: 0.18em; }
   padding: 1rem 0.6rem 0.9rem; display: grid; gap: 0.2rem; justify-items: center;
   transition: background-color 0.15s, color 0.15s;
 }
-.city:hover { background: rgba(175, 70, 83, 0.1); }
+.city:hover { background: rgba(55, 113, 22, 0.1); }
 .city-code { font: 400 clamp(1.9rem, 5vw, 2.5rem)/1 var(--display); }
 .city-date, .city-venue { font: 400 0.95rem/1.25 var(--display); text-transform: uppercase; letter-spacing: 0.02em }
 .city-venue { font-size: 0.82rem; }
-.city[aria-checked="true"] { background: var(--rose); color: var(--mustard); box-shadow: 4px 4px 0 var(--maroon); }
-.city[aria-checked="true"] .city-code { text-shadow: 2px 2px 0 var(--maroon); }
+.city[aria-checked="true"] { background: var(--vine); border-color: var(--vine); color: var(--mustard); box-shadow: 4px 4px 0 var(--vine-deep); }
+.city[aria-checked="true"] .city-code { text-shadow: 2px 2px 0 var(--vine-deep); }
 .city:disabled { cursor: not-allowed; opacity: 0.45; }
 
 /* Designs */
