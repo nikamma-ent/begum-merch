@@ -6,7 +6,7 @@
   --sky-deep: #CFC86A;
   --rose: #AF4653;      /* lettering */
   --maroon: #5A1A2A;    /* lettering shadow, body text */
-  --cobalt: #175AA4;    /* clouds: selection, focus */
+  --vine: #377116;      /* dark vine green from the border: selection, focus */
   --leaf: #2F6B2E;      /* vines */
   --line: rgba(90, 26, 42, 0.28);
   --error: #8E1230;
@@ -54,7 +54,7 @@ body {
 }
 
 a { color: inherit; text-underline-offset: 0.18em; }
-:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--vine); outline-offset: 3px; }
 
 /* The page is the poster: floral frame round the whole screen, mustard
    ground and print grain edge to edge, content centred on a sheet. */
@@ -174,7 +174,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
   font: 700 1.05rem var(--body); color: var(--maroon); cursor: pointer;
 }
 .size:hover { border-color: var(--maroon); }
-.size[aria-pressed="true"] { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+.size[aria-pressed="true"] { background: var(--vine); border-color: var(--vine); color: #fff; }
 .size:disabled { text-decoration: line-through; opacity: 0.45; cursor: not-allowed; }
 .left { font-size: 0.95rem; font-style: italic; margin: 0; }
 .left:empty { display: none; }
@@ -225,7 +225,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
   padding: 0.8rem 1rem; width: 100%;
 }
 .details input::placeholder { color: rgba(90, 26, 42, 0.5); }
-.details input:focus-visible { border-color: var(--cobalt); outline-offset: 1px; }
+.details input:focus-visible { border-color: var(--vine); outline-offset: 1px; }
 .details input[aria-invalid="true"] { border-color: var(--error); }
 .form-error { color: var(--error); margin: 0; min-height: 1.5em; font-weight: 700; }
 .pay {
@@ -236,7 +236,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
   box-shadow: 4px 4px 0 var(--maroon);
   transition: transform 0.08s, box-shadow 0.08s;
 }
-.pay:hover:not(:disabled) { background: var(--cobalt); color: #fff; }
+.pay:hover:not(:disabled) { background: var(--vine); color: #fff; }
 .pay:active:not(:disabled) { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--maroon); }
 .pay:disabled { opacity: 0.5; cursor: not-allowed; }
 .fine { margin: 0; font-size: 0.92rem; }
