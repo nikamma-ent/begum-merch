@@ -71,17 +71,20 @@ a { color: inherit; text-underline-offset: 0.18em; }
 .sheet { max-width: 1140px; margin: 0 auto; }
 
 /* Hero: the poster illustration, then the lettering */
-.hero { text-align: center; padding-bottom: clamp(1.5rem, 5vw, 3rem); }
+.hero {
+  --art-gap: clamp(14px, 3.5vw, 36px); /* breathing room inside the floral border */
+  text-align: center; padding: var(--art-gap) 0 clamp(1.5rem, 5vw, 3rem);
+}
 /* Full width on phones and tablets; on wide, short screens it's capped at
    about 60% of the screen height so the title and shows stay in view. */
 .hero-print {
   position: relative; margin: 0 auto; overflow: hidden;
-  width: min(100%, max(75vh, 560px));
+  width: min(100% - 2 * var(--art-gap), max(75vh, 560px));
+  border-radius: clamp(12px, 2vw, 22px);
 }
 /* Same grain as the page, so the art's mustard meets the ground without a seam */
 .hero-print::after { content: ""; position: absolute; inset: 0; background-image: var(--grain); pointer-events: none; }
 .hero-art { display: block; width: 100%; height: auto; }
-@media (min-width: 900px) { .hero-print { border-radius: 0 0 22px 22px; } }
 .hero h1 {
   font: 400 clamp(2.3rem, 9.4vw, 6.2rem)/1 var(--display);
   text-transform: uppercase;
