@@ -25,7 +25,7 @@ export const SIZES = ["S", "M", "L", "XL", "XXL"];
 // price: pre-order price in rupees (what the site charges).
 // venuePrice: what the same tee costs at the merch table on the night.
 //   Shown crossed out so fans see the saving. null hides it.
-// image / imageBack: paths under /docs, e.g. "img/tee-a.jpg" (no leading
+// image / imageBack: paths under docs/waot-merch, e.g. "img/tee-a.jpg" (no leading
 //   slash). imageBack adds a Front/Back switch; null hides it.
 // With no image, the site draws a plain tee in `color`.
 export const DESIGNS = [
