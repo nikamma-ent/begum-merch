@@ -138,8 +138,8 @@
     if (!s) return "";
     const n = left(id, s);
     if (n === null) return "";
-    if (n <= 0) return `${s} is sold out.`;
-    return n <= 5 ? `Only ${n} left in ${s}.` : "";
+    if (n <= 0) return `${s} is sold out for ${city(state.city).name}.`;
+    return n <= 5 ? `Only ${n} left in ${s} for ${city(state.city).name}.` : "";
   }
 
   function addToCart(id, card) {
@@ -155,7 +155,7 @@
     if (cartQty() >= maxPerOrder) return say(`You can order up to ${maxPerOrder} tees at once.`, true);
     if (have >= maxPerLine) return say(`You can order up to ${maxPerLine} of each size.`, true);
     const n = left(id, size);
-    if (n !== null && have + 1 > n) return say(`Only ${n} left in ${size}.`, true);
+    if (n !== null && have + 1 > n) return say(`Only ${n} left in ${size} for ${city(state.city).name}.`, true);
 
     if (line) line.qty++;
     else state.cart.push({ design: id, size, qty: 1 });

@@ -62,15 +62,22 @@ export const SIZE_CHART = null;
 //   XXL: { chest: 46, length: 31 },
 // };
 
-// Stock caps per design and size. null = unlimited (print to order).
-// "all" is one pool shared by every show: a tee sold for Delhi is one fewer
-// for Bangalore. A city's own entry (e.g. goa: {...}) would give that city a
-// separate pool instead. Leave out a design/size to make it unlimited.
-const TOUR_SPLIT = { S: 10, M: 14, L: 14, XL: 8, XXL: 4 }; // 50 per design
-
-export const STOCK_CAPS = {
-  all: { "tee-a": TOUR_SPLIT, "tee-b": TOUR_SPLIT },
+// Stock caps per city, design and size. null = unlimited (print to order).
+// Each city has its own pool: a sale in Delhi doesn't touch Goa's stock.
+// An "all" entry instead would be one pool shared by every show.
+// Leave out a design/size to make it unlimited; 0 means sold out.
+// 50 per design across the tour: S 10, M 14, L 14, XL 8, XXL 4.
+const PER_CITY = {
+  delhi:     { S: 3, M: 4, L: 4, XL: 2, XXL: 1 }, // 14
+  goa:       { S: 2, M: 3, L: 3, XL: 2, XXL: 0 }, // 10
+  mumbai:    { S: 2, M: 3, L: 3, XL: 2, XXL: 1 }, // 11
+  bangalore: { S: 3, M: 4, L: 4, XL: 2, XXL: 2 }, // 15
 };
+
+// Same split for both tees.
+export const STOCK_CAPS = Object.fromEntries(
+  Object.entries(PER_CITY).map(([city, sizes]) => [city, { "tee-a": sizes, "tee-b": sizes }])
+);
 
 export const LIMITS = { maxPerLine: 5, maxPerOrder: 10 };
 
