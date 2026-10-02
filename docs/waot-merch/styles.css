@@ -281,6 +281,7 @@ a { color: inherit; text-underline-offset: 0.18em; }
 .foot { margin: 2rem var(--gutter) 0; padding: 1.6rem 0 6.5rem; border-top: 2px dashed var(--line); font-size: 0.98rem; text-align: center; }
 .foot nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.4rem; margin-bottom: 0.5rem; }
 .foot p { margin: 0; font-style: italic; }
+.foot .credit { margin-top: 0.6rem; font-style: normal; font-size: 0.92rem; }
 @media (min-width: 860px) { .foot { padding-bottom: 2.4rem; } }
 
 /* Policy pages */
